@@ -26,7 +26,7 @@ module.exports = (app) => {
 
 
     app.get('/authenticate', passportInstance.authenticate('google', { 
-        scope: 'email profile openid',
+        scope: 'email profile',
         successRedirect: '/authenticated',
         failureRedirect: '/notauthenticated'
     }));
@@ -41,7 +41,8 @@ module.exports = (app) => {
 
     app.route('/')
         .get((req, res) => {
-            res.render('index',{isAuthenticated: req.isAuthenticated()});
+            console.log({isAuthenticatedUser: req.isAuthenticated()});
+            res.render('index',{isAuthenticatedUser: req.isAuthenticated()});
         });
 
     app.get('/bmi',function(req,res){
