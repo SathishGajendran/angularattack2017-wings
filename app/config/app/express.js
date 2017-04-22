@@ -69,7 +69,7 @@ module.exports.initMiddlewares = (app) => {
     }));
 
     // Environment dependent middleware
-    if (process.env.WINGS_ENVIRONMENT === 'local') {
+    if (config.environment === 'local') {
         // Disable views cache
         app.set('view cache', false);
     }
@@ -128,7 +128,7 @@ module.exports.initHelmetHeaders = (app) => {
 module.exports.initClientModules = (app) => {
     let options = {};
     
-    if (process.env.WINGS_ENVIRONMENT === 'production') {
+    if (config.environment === 'production') {
         options.maxAge = (1000 * 60 * 60 * 24); // 1 day
     }
     // Setting Static Assets folders
