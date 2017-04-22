@@ -1,0 +1,86 @@
+{
+  "name": "wings-fitness-app",
+  "version": "1.0.0",
+  "description": "An Application for Fitness",
+  "main": "./app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hackbit/angularattack2017-wings.git"
+  },
+  "keywords": [
+    "wings",
+    "fitness",
+    "angularattack-2017"
+  ],
+  "author": [
+    {
+      "name": "Surya A",
+      "email": "ma.suryadpm@gmail.com"
+    },
+    {
+      "name": "Sathish G",
+      "email": ""
+    },
+    {
+      "name": "Arun Vignesh",
+      "email": ""
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hackbit/angularattack2017-wings/issues"
+  },
+  "homepage": "https://github.com/Hackbit/angularattack2017-wings#readme",
+  "dependencies": {
+    "@angular/animations": "^4.0.3",
+    "@angular/common": "^4.0.3",
+    "@angular/compiler": "^4.0.3",
+    "@angular/core": "^4.0.3",
+    "@angular/forms": "^4.0.3",
+    "@angular/http": "^4.0.3",
+    "@angular/material": "^2.0.0-beta.3",
+    "@angular/platform-browser": "^4.0.3",
+    "@angular/platform-browser-dynamic": "^4.0.3",
+    "@angular/router": "^4.0.3",
+    "@types/lodash": "^4.14.63",
+    "@types/node": "^7.0.13",
+    "@types/requirejs": "^2.1.29",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "chalk": "^1.1.3",
+    "compression": "^1.6.2",
+    "connect-mongo": "^1.3.2",
+    "consolidate": "^0.14.5",
+    "cookie-parser": "^1.4.3",
+    "core-js": "^2.4.1",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "fs": "0.0.1-security",
+    "glob": "^7.1.1",
+    "hammerjs": "^2.0.8",
+    "helmet": "^3.5.0",
+    "lodash": "^4.17.4",
+    "method-override": "^2.3.8",
+    "mongoose": "^4.9.5",
+    "passport": "^0.3.2",
+    "pug": "^2.0.0-beta.12",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.3.0",
+    "zone.js": "^0.8.8"
+  },
+  "devDependencies": {
+    "angular2-template-loader": "^0.6.2",
+    "awesome-typescript-loader": "^3.1.2",
+    "css-loader": "^0.28.0",
+    "html-loader": "^0.4.5",
+    "node-sass": "^4.5.2",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1",
+    "typescript": "^2.2.2",
+    "webpack": "^2.4.1"
+  }
+}

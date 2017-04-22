@@ -1,0 +1,8 @@
+# Wings Fitness App
+# Application Ignored Files
+
+# Node JS
+/node_modules
+
+# Assets
+/public
