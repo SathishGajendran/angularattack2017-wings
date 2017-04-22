@@ -1,32 +1,40 @@
 import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class loginService implements CanActivate{
      
-     constructor(private router: Router){
+     private user :Object
+
+     constructor(private router: Router, private http: Http){
 
      }
 
-      canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-        // let routesneedAuthentication = ['/home'],
-        //     routesNoneedAuthentication=['/login'];
-        // if (routesneedAuthentication.indexOf(state.url) > -1){
-        //     if ((<any>window).isAuthenticatedUser){
-        //         return true;
-        //     } else {
-        //         this.router.navigate(['login']);
-        //         return false;
-        //     }
-        // } else {
-        //     if ((<any>window).isAuthenticatedUser){
-        //         this.router.navigate(['']);
-        //         return false;
-        //     } else{
-        //         return true;
-        //     }
-        // }
+    getUserDetails(): Promise<{}>{
+         let self = this;
+         return new Promise((resolve, reject) => {
+              self.http.get('userdetails')
+                .toPromise()
+                .then(function(result :any){
+                    console.log(result);
+                    if(result.status == 200){
+                         self.user = JSON.parse(result._body).user;
+                        resolve(self.user);
+                    }
+                    else{
+                        reject();
+                    }
+                },function(result){
+                    reject(result);
+                });
+         });
+        
+     };
 
+      canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
+        
         if((<any>window).isAuthenticatedUser){
             if(state.url != '/login'){
                 return true;

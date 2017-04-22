@@ -44,6 +44,18 @@ module.exports = (app) => {
             res.render('index',{isAuthenticatedUser: req.isAuthenticated()});
         });
 
+    app.get('/userdetails', (req, res)=>{
+        if(req.isAuthenticated()){
+            res.json({
+                code:200,
+                user:req.user
+            });
+        }
+        else{
+            res.status(401).json({srr:'Unauthorized Access!!!'});
+        }
+    });
+
     app.get('/bmi',function(req,res){
         res.json({
             bmi:"323",

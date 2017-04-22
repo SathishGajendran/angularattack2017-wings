@@ -33,6 +33,7 @@ const mainRouter : Route[] = [
         SidebarModule,
         NavbarModule,
         FooterModule,
+        HttpModule,
   //      loginModule,
         RouterModule.forRoot(mainRouter)
     ],
