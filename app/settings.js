@@ -13,10 +13,10 @@ let settings = {
     port: 5000,
     /** db */
     db: {
-        hostname: 'localhost:27017',
-        name: 'wings-fitness',
-        username: '',
-        password: '',
+        hostname: 'ds111851.mlab.com:11851',
+        name: 'wingsfitnessapp',
+        username: 'wings',
+        password: 'Good@123',
         connectionTimeout: 5000
     }
 };
