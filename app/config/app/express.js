@@ -133,6 +133,7 @@ module.exports.initClientModules = (app) => {
     }
     // Setting Static Assets folders
     app.use('/', express.static(path.resolve('./public'), options));
+    app.use('/assets', express.static(path.resolve('./app/frontend/assets'), options));
 };
 
 /**

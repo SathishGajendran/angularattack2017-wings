@@ -10,6 +10,7 @@ import '@angular/common';
 import '@angular/router';
 import '@angular/http';
 import '@angular/forms';
+import '@angular/upgrade';
 
 // Angular Material Theme
 import '@angular/material/prebuilt-themes/indigo-pink.css';
