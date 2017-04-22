@@ -10,7 +10,7 @@ let settings = {
     /** environment */
     environment: 'local',
     /** port */
-    port: 7200,
+    port: 5000,
     /** db */
     db: {
         hostname: 'localhost:27017',

@@ -4,7 +4,11 @@
   "description": "An Application for Fitness",
   "main": "./app/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "engines": {
+    "node": "6.10.1"
   },
   "repository": {
     "type": "git",
