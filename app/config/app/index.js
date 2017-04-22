@@ -29,7 +29,7 @@ module.exports.init = (callback) => {
 module.exports.start = (port, db) => {
     this.db = db;
     this.init((app) => {
-        app.listen(port, () => {
+        app.listen((process.env.PORT | port), () => {
             console.log('--: Application Started :--');
         });
     });
