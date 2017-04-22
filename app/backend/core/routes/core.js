@@ -41,7 +41,6 @@ module.exports = (app) => {
 
     app.route('/')
         .get((req, res) => {
-            console.log({isAuthenticatedUser: req.isAuthenticated()});
             res.render('index',{isAuthenticatedUser: req.isAuthenticated()});
         });
 
