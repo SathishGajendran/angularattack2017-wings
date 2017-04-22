@@ -1,29 +1,42 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Route } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent }   from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { homeComponent }   from './home.component';
+//import { DashboardComponent } from './dashboard/dashboard.component';
+import { loginComponent } from './Login/login.component';
+import { appComponent } from './app.component';
+import { MODULE_COMPONENTS , MODULE_ROUTES} from './dashboard/dashboard.routes'
 
-import { DashboardModule } from './dashboard/dashboard.module';
+//import { DashboardModule } from './dashboard/dashboard.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
+//import { loginModule } from './Login/login.module';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
+const mainRouter : Route[] = [
+    {path:'login', component: loginComponent},
+    {path:'home', component: homeComponent,
+        children:MODULE_ROUTES
+     },
+    { path: '', redirectTo: 'login', pathMatch: 'full' }
+];
 
 @NgModule({
     imports:      [
         BrowserModule,
-        DashboardModule,
+  //      DashboardModule,
         SidebarModule,
         NavbarModule,
         FooterModule,
-        RouterModule.forRoot([])
+  //      loginModule,
+        RouterModule.forRoot(mainRouter)
     ],
-    declarations: [ AppComponent, DashboardComponent ],
+    declarations: [ homeComponent, loginComponent, appComponent ].concat(MODULE_COMPONENTS),
     providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
-    bootstrap:    [ AppComponent ]
+    bootstrap:    [ appComponent ]
 })
 export class AppModule { }
