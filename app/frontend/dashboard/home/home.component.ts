@@ -9,6 +9,10 @@ declare var $:any;
 })
 
 export class HomeComponent implements OnInit{
+    bmi:any ={
+        index:23,
+        status:"Normal"
+    };
     ngOnInit(){
         // $('[data-toggle="checkbox"]').each(function () {
         //     if($(this).data('toggle') == 'switch') return;

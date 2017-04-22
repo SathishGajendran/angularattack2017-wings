@@ -43,4 +43,11 @@ module.exports = (app) => {
         .get((req, res) => {
             res.render('index',{isAuthenticated: req.isAuthenticated()});
         });
+
+    app.get('/bmi',function(req,res){
+        res.json({
+            bmi:"323",
+            status:"Normal"
+        });
+    })
 };
