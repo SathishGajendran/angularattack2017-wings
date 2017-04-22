@@ -1,0 +1,56 @@
+{
+  "name": "wings-fitness-app",
+  "version": "1.0.0",
+  "description": "An Application for Fitness",
+  "main": "./app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hackbit/angularattack2017-wings.git"
+  },
+  "keywords": [
+    "wings",
+    "fitness",
+    "angularattack-2017"
+  ],
+  "author": [
+    {
+      "name": "Surya A",
+      "email": "ma.suryadpm@gmail.com"
+    },
+    {
+      "name": "Sathish G",
+      "email": ""
+    },
+    {
+      "name": "Arun Vignesh",
+      "email": ""
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hackbit/angularattack2017-wings/issues"
+  },
+  "homepage": "https://github.com/Hackbit/angularattack2017-wings#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "chalk": "^1.1.3",
+    "compression": "^1.6.2",
+    "connect-mongo": "^1.3.2",
+    "consolidate": "^0.14.5",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "fs": "0.0.1-security",
+    "glob": "^7.1.1",
+    "helmet": "^3.5.0",
+    "lodash": "^4.17.4",
+    "method-override": "^2.3.8",
+    "mongoose": "^4.9.5",
+    "passport": "^0.3.2",
+    "pug": "^2.0.0-beta.12"
+  }
+}
