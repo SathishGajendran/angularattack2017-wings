@@ -26,10 +26,10 @@ module.exports.init = (callback) => {
  * @name start
  * @description Init and Start
  */
-module.exports.start = (db) => {
+module.exports.start = (port, db) => {
     this.db = db;
     this.init((app) => {
-        app.listen(process.env.WINGS_PORT, () => {
+        app.listen(port, () => {
             console.log('--: Application Started :--');
         });
     });

@@ -11,7 +11,9 @@ var _ = require('lodash'),
 
 /** configurations */
 let config = require('./env/default');
-config = Object.assign({}, config, require('./env/' + process.env.WINGS_ENVIRONMENT));
+let settings = require('.././settings');
+config = Object.assign({}, config, require('./env/' + settings.environment));
+config.environment = settings.environment;
 module.exports = config;
 
 /** @function
