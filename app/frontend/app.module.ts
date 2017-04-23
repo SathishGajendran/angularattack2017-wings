@@ -17,6 +17,7 @@ import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { MyGoalsComponent } from './dashboard/mygoals/mygoals.component'
+import { UserComponent } from './dashboard/user/user.component';
 //import { loginModule } from './Login/login.module';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -43,7 +44,7 @@ const mainRouter: Route[] = [
         //      loginModule,
         RouterModule.forRoot(mainRouter)
     ],
-    declarations: [homeComponent, loginComponent, appComponent, MyGoalsComponent].concat(MODULE_COMPONENTS),
+    declarations: [homeComponent, loginComponent, appComponent, MyGoalsComponent, UserComponent].concat(MODULE_COMPONENTS),
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, loginService, GoalService],
     bootstrap: [appComponent]
 })

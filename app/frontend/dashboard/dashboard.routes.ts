@@ -20,7 +20,6 @@ export const MODULE_ROUTES: Route[] = [
 
 export const MODULE_COMPONENTS = [
     HomeComponent,
-    UserComponent,
     TableComponent,
     IconsComponent,
     NotificationsComponent,
