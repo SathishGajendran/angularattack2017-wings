@@ -18,7 +18,8 @@ let settings = {
         username: 'wings',
         password: 'Good@123',
         connectionTimeout: 5000
-    }
+    },
+    domainUrl:'http://localhost:5000/authenticate/'
 };
 
 /** exports the settings */
