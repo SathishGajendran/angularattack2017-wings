@@ -20,6 +20,8 @@ import { MyGoalsComponent } from './dashboard/mygoals/mygoals.component'
 import { UserComponent } from './dashboard/user/user.component';
 //import { loginModule } from './Login/login.module';
 
+import { ShardService } from './shared/shared.service';
+
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const mainRouter: Route[] = [
@@ -45,7 +47,7 @@ const mainRouter: Route[] = [
         RouterModule.forRoot(mainRouter)
     ],
     declarations: [homeComponent, loginComponent, appComponent, MyGoalsComponent, UserComponent].concat(MODULE_COMPONENTS),
-    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, loginService, GoalService],
+    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, loginService, GoalService, ShardService],
     bootstrap: [appComponent]
 })
 export class AppModule { }
