@@ -8,7 +8,7 @@
 /** settings */
 let settings = {
     /** environment */
-    environment: 'local',
+    environment: 'production',
     /** port */
     port: 5000,
     /** db */
