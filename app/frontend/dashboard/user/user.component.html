@@ -9,38 +9,16 @@
                 </div>
                 <div class="card-content">
                     <form>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Company (disabled)</label>
-                                    <input type="text" class="form-control" disabled>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Username</label>
-                                    <input type="text" class="form-control" >
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Email address</label>
-                                    <input type="email" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Fist Name</label>
-                                    <input type="text" class="form-control" >
+                                    <input type="text" readonly [value]= "user.name.givenName" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Last Name</label>
-                                    <input type="text" class="form-control" >
+                                    <input type="text" readonly [value]= "user.name.familyName" class="form-control" >
                                 </div>
                             </div>
                         </div>
@@ -48,7 +26,16 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Adress</label>
+                                    <input type="email" readonly [value]= "user.emails[0].value" class="form-control"
+                                    placeholder="Email" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Address</label>
                                     <input type="text" class="form-control" >
                                 </div>
                             </div>
@@ -78,9 +65,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>About Me</label>
+                                    <label>About me</label>
                                     <div class="form-group form-black label-floating is-empty">
-                                        <label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                        <label class="control-label">Help us to know you better..</label>
                                         <textarea class="form-control" rows="5"></textarea>
                                     </div>
                                 </div>
@@ -97,17 +84,13 @@
             <div class="card card-profile">
                 <div class="card-avatar">
                     <a href="#pablo">
-                        <img class="img" src="../assets/img/faces/marc.jpg" />
+                        <img class="img" [src]="user.photos[0].value" />
                     </a>
                 </div>
 
                 <div class="content">
-                    <h6 class="category text-gray">CEO / Co-Founder</h6>
-                    <h4 class="card-title">Alec Thompson</h4>
-                    <p class="card-content">
-                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                    </p>
-                    <a href="#pablo" class="btn btn-danger btn-round">Follow</a>
+                    <h6 class="category text-gray">{{user._json.occupation}}</h6>
+                    <h4 class="card-title">{{user.displayName}}</h4>
                 </div>
             </div>
         </div>
