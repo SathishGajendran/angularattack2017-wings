@@ -1,0 +1,158 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title">
+                            My Goals
+                            <button (click)='displayPanel(true)' style="margin-top: -3px;" class='btn btn-primary pull-right' color='primary' md-raised-button>
+                            <i class="material-icons">add_circle</i> &nbsp;
+                            Add Goal
+                        </button>
+                        </h4>
+                        <p class="category"></p>
+                    </div>
+                    <div class="card-content" style="background: #FFFFEE">
+                        <div class='my-goals'>
+                            <div class="panel panel-info" *ngIf='showGoalPanel'>
+                                <div class="panel-heading">
+                                    <i class="material-icons" style="vertical-align: bottom">add_circle</i> &nbsp;
+                                    <strong>Add New Goal</strong>
+                                </div>
+                                <div class="panel-body">
+                                    <form #addgoalForm='ngForm' class='form'>
+                                        <div class='form-section'>
+                                            <input [(ngModel)]='newGoal.goal' name='newgoal-name' vtype="text" class='form-control' placeholder="Your Goal here..." required>
+                                            <select [(ngModel)]='newGoal.goalType' name="newgoal-goaltype" id="" required class="form-control" placeholder='Select Goal Type'>
+                                                <option value="daily" selected>Daily Goal</option>
+                                                <option value="monthly">Monthly Goal</option>
+                                            </select>
+                                            <div class='col-md-12' *ngIf='newGoal.goalType === "monthly"'>
+                                                <div class='col-md-4'>
+                                                    <div class="checkbox" *ngIf='newGoal.goalType === "monthly"'>
+                                                        <label>
+                                                            <input required name="isWeightLoss" type="checkbox" [(ngModel)]='newGoal.isWeightLose'> Weight Loss Goal
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class='col-md-4' *ngIf='newGoal.isWeightLose'>
+                                                    <div>
+                                                        <input required [(ngModel)]='newGoal.currentWeight' name='newgoal-weight' type="number" class='form-control' placeholder="Your Weight">
+                                                    </div>
+                                                </div>
+                                                <div class='col-md-4' *ngIf='newGoal.isWeightLose'>
+                                                    <div>
+                                                        <input required [(ngModel)]='newGoal.goalWeight' name='newgoal-weight' max='{{newGoal.currentWeight}}' type="number" class='form-control'
+                                                            placeholder="Goal Weight">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='text-right'>
+                                            <button class='btn btn-info' (click)='saveGoal()' type="button" [disabled]='(!newGoal.goal || newGoal.disabled)'>
+                                            <i class="material-icons" style="vertical-align: bottom">save</i> Save
+                                        </button>&nbsp;
+                                            <button (click)='displayPanel(false)' class='btn btn-danger' type="button">
+                                            <i class="material-icons" style="vertical-align: bottom">close</i> Close
+                                        </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class='goals-list'>
+                                <div *ngIf='goals.length'>
+                                    <div style="display:inline-block; width: 45%; margin-right: 12px;" *ngFor='let item of goals; let itemIndex=index'>
+                                        <div class="card card-stats">
+                                            <div class="card-header" [attr.data-background-color]="getGoalCardColor(item.goalType)">
+                                                <i class="fa {{item.goalType === 'daily' ? 'fa-bullseye': 'fa-child'}}" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="card-content">
+                                                <span *ngIf='!isTodayActivityEnabled(item.activity) && item.goalType==="daily"' class='pull-right' style="font-size: 42px;position: relative;top: 0px;right: -15px;z-index: 999;color: #4caf50;">
+                                                    <i class='fa fa-check'></i>
+                                                </span>
+                                                <p class="category" [innerHTML]='item.goalType'></p>
+                                                <h3 class="title" [innerHTML]='item.goal'></h3>
+                                                <p *ngIf='item.goalType=="monthly"'>
+                                                    <a href="javascript:void(0);" *ngIf='item.isWeightLose' (click)='item.showWeight=true'>
+                                                        <i class="fa fa-calculator" aria-hidden="true"></i> Log Your Weight
+                                                    </a>
+                                                    <a href="javascript:void(0);" *ngIf='!item.isWeightLose' (click)='item.showProgress=true'>
+                                                        <i class="fa fa-calculator" aria-hidden="true"></i> Log Your Goal %
+                                                    </a>
+                                                </p>
+                                                <form class="form form-inline" *ngIf='item.showWeight'>
+                                                    <div class="form-group has-success has-feedback" style="margin: 0px !important">
+                                                        <div class="input-group" style="margin: 0px !important">
+                                                            <input [(ngModel)]='logActivity.weight' name='weight' placeholder="Weight Here..." name='weight-log' type="number" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
+                                                            <span class="input-group-addon" style="cursor: pointer;" (click)='logMonthlyActivity(item, itemIndex)'>
+                                                                <i class='fa fa-check'></i>
+                                                            </span>
+                                                            <span class="input-group-addon" style="cursor: pointer;" (click)='item.showWeight = false'>
+                                                                <i class='fa fa-close'></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <form class="form form-inline" *ngIf='item.showProgress'>
+                                                    <div class="form-group has-success has-feedback" style="margin: 0px !important">
+                                                        <div class="input-group" style="margin: 0px !important">
+                                                            <input [(ngModel)]='logActivity.progress' name='progress' placeholder="Goal % Here..." name='weight-log' type="number" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
+                                                            <span class="input-group-addon" style="cursor: pointer;" (click)='logMonthlyActivity(item, itemIndex)'>
+                                                                <i class='fa fa-check'></i>
+                                                            </span>
+                                                            <span class="input-group-addon" style="cursor: pointer;" (click)='item.showProgress = false'>
+                                                                <i class='fa fa-close'></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="progress" style="display: block !important;" *ngIf='item.goalType !== "daily"'>
+                                                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                                                        aria-valuemax="100"
+                                                        [style.width]='getProgressPercentage(item)'>
+                                                        {{getProgressPercentage(item)}}%
+                                                    </div>
+                                                </div>
+                                                <div class='text-right text-success' style="display: block !important;height: 20px;margin-bottom: 20px;overflow: hidden;"
+                                                    *ngIf='item.goalType === "daily"'>
+                                                    <a href='javascript:void(0);' (click)='doneDailyActivity(item, itemIndex)' *ngIf='isTodayActivityEnabled(item.activity)'>
+                                                        <i class="fa fa-thumbs-up" aria-hidden="true"></i> Done
+                                                    </a>
+                                                    <a class='text-success' href="javascript:void(0);" *ngIf='!isTodayActivityEnabled(item.activity)'>
+                                                        <i class="fa fa-thumbs-up" aria-hidden="true"></i> Activity Completed.
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf='!goals.length && !showGoalPanel'>
+                                    <div style="width: 60%; margin: 5px auto;">
+                                        <div class="card">
+                                            <div class="card-header" data-background-color="red">
+                                                <h4 style="vertical-align: center;">
+                                                    <i class="material-icons" style="vertical-align: center;">warning</i>                                                    &nbsp; No Goals Found! No Goals Found
+                                                </h4>
+                                            </div>
+                                            <div class="card-content text-center">
+                                                <button (click)='displayPanel(true)' style="margin-top: -3px;" class='btn btn-primary' color='primary' md-raised-button>
+                                                    <i class="material-icons">add_circle</i> &nbsp;
+                                                    Add Goal
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
