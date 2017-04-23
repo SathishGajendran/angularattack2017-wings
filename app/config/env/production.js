@@ -8,7 +8,7 @@
 let config = {
     /** App configuration */
     app: {
-        title: 'FitPartner',
+        title: 'FitPartner :: Wings',
         description: 'Fitness App',
         keywords: 'Fitness, Application'
     }

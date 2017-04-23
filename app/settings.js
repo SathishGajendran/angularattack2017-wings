@@ -19,7 +19,8 @@ let settings = {
         password: 'Good@123',
         connectionTimeout: 5000
     },
-    domainUrl:'http://localhost:5000/authenticate/'
+    domainUrl: 'https://angularattackwings.herokuapp.com/authenticate/'
+    // domainUrl: 'http://localhost:5000/authenticate/'
 };
 
 /** exports the settings */
