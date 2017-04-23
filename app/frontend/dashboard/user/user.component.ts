@@ -6,16 +6,19 @@ import { ShardService } from '../../shared/shared.service';
     templateUrl: 'user.component.html'
 })
 
-export class UserComponent implements OnInit{
-    user:object;
-    
-    constructor(shardService:ShardService){
-        this.user = shardService.user;
+export class UserComponent implements OnInit {
+    user: any = {
+        name: {}
+    };
+
+    constructor(private shardService: ShardService) {
+        this.shardService.getUser()
+            .then((response) => {
+                this.user = response;
+            });        
     }
-    ngOnInit(){
+    ngOnInit() {
         // $.getScript('../../../assets/js/material-dashboard.js');
 
     }
-
-
 }

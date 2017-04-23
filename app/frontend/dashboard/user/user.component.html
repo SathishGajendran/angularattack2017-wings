@@ -1,53 +1,50 @@
 <div class="main-content">
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header" data-background-color="red">
-                    <h4 class="title">Profile</h4>
-                    <p class="category">view your profile</p>
-                </div>
-                <div class="card-content">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <input type="text" readonly [value]= "user.displayName" class="form-control"
-                                    placeholder="Name" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title">Profile</h4>
+                        <p class="category">view your profile</p>
+                    </div>
+                    <div class="card-content">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <input type="text" readonly [value]="user.displayName" class="form-control" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <input type="text" readonly [value]="user.gender" class="form-control" placeholder="Gender">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <input type="text" readonly [value]= "user.gender" class="form-control"
-                                    placeholder="Gender" >
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <input type="text" readonly [value]= "user.name.givenName" class="form-control" >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <input type="text" readonly [value]="user.name.givenName" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <input type="text" readonly [value]="user.name.familyName" class="form-control">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <input type="text" readonly [value]= "user.name.familyName" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <input type="email" readonly [value]= "user.emails[0].value" class="form-control"
-                                    placeholder="Email" >
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <input type="email" readonly [value]="user.email" class="form-control" placeholder="Email">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        
-<!--
+
+                            <!--
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group form-black label-floating is-empty">
@@ -91,25 +88,25 @@
                         </div>
 
                         <button type="submit" class="btn btn-danger pull-right">Update Profile</button>-->
-                        <div class="clearfix"></div>
-                    </form>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-profile">
-                <div class="card-avatar">
-                    <a href="#pablo">
-                        <img class="img" [src]="user.photos[0].value" />
-                    </a>
-                </div>
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="javascript:void(0);">
+                            <img class="img" [src]="user.photos" />
+                        </a>
+                    </div>
 
-                <div class="content">
-                    <h6 class="category text-gray">{{user._json.occupation}}</h6>
-                    <h4 class="card-title">{{user.displayName}}</h4>
+                    <div class="content">
+                        <h6 class="category text-gray">{{user.occupation}}</h6>
+                        <h4 class="card-title">{{user.displayName}}</h4>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
