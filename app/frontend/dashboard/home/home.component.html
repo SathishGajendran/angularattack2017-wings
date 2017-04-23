@@ -1,130 +1,92 @@
 <div class="main-content">
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats" >
-                        <div class="card-header" data-background-color="green">
-                            <i class="material-icons">content_copy</i>
-                        </div>
-                        <div class="card-content">
-                            <p class="category">BMI</p>
-                            <h3 class="title">{{bmi.index}}</h3>
-                        </div>
-                        
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons text-success">info</i> <a href="#pablo">{{bmi.status}}</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="fa fa-pencil"></i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">BMI Calculation</p>
+                        <h3 class="title text-{{bmi.info.className}}" *ngIf='bmiWeight && bmiHeight'>{{bmi.value}}</h3>
+                        <div class='col-md-12'>
+                            <div class="col-md-6">
+                                <input [(ngModel)]='bmiWeight' type="number" class='form-control' placeholder="Weight in KG">
+                            </div>
+                            <div class="col-md-6">
+                                <input [(ngModel)]='bmiHeight' type="number" class='form-control' placeholder="Height in CM">
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats" >
-                        <div class="card-header" data-background-color="blue">
-                            <i class="material-icons">info_outline</i>
-                        </div>
-                        <div class="card-content">
-                            <p class="category">Steps</p>
-                            <h3 class="title">126</h3>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">date_range</i> Last 24 Hours
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats" >
-                        <div class="card-header" data-background-color="blue">
-                            <i class="material-icons">info_outline</i>
-                        </div>
-                        <div class="card-content">
-                            <p class="category">Walking</p>
-                            <h3 class="title">75m</h3>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">date_range</i> Last 24 Hours
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats" >
-                        <div class="card-header" data-background-color="blue">
-                            <i class="material-icons">info_outline</i>
-                        </div>
-                        <div class="card-content">
-                            <p class="category">Running</p>
-                            <h3 class="title">2 Km</h3>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">date_range</i> Last 24 Hours
+                    <div class="card-footer text-right">
+                        <div class="stats" *ngIf='displayBmiShow()'>
+                            <div class='text-{{bmi.info.className}}'>
+                                <strong [innerHTML]='bmi.info.name' class='pull-right'></strong>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card" >
-                        <div class="card-header card-chart" data-background-color="green">
-                            <div class="ct-chart" id="dailySalesChart"></div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="title">Daily Workouts</h4>
-                            <p class="category"><span class="text-success"><i class="fa fa-long-arrow-up"></i> 55%  </span> increase in today workout.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">access_time</i> updated 2 minutes ago
-                            </div>
-                        </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="fa fa-child"></i>
                     </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card" >
-                        <div class="card-header card-chart" data-background-color="orange">
-                            <div class="ct-chart" id="emailsSubscriptionChart"></div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="title">Email Subscriptions</h4>
-                            <p class="category"></p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">access_time</i> updated 2 minutes ago
-                            </div>
-                        </div>
+                    <div class="card-content">
+                        <h3 class="title">
+                            <a href="javascript:void(0);" [routerLink]='mygoals'>
+                                <i class='fa fa-magic'></i> Goals
+                            </a>
+                        </h3>
+                        <p class="category">stay fit...</p>
 
                     </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card" >
-                        <div class="card-header card-chart" data-background-color="red">
-                            <div class="ct-chart" id="completedTasksChart"></div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="title">Completed Tasks</h4>
-                            <p class="category"></p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">access_time</i> updated 2 minutes ago
-                            </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">date_range</i> Daily & Monthly Goals...
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!--<div class="row">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+
+                    <div class="card-content">
+                        <h4 class="title text-info">
+                            <i class='fa fa-tags'></i> &nbsp;
+                            Health Tips
+                        </h4>
+                        <p class="category text-info">
+                            Here, We listed some health tips to improve your fitness and health
+                        </p>
+                        <ul>
+                            <li>Body weight exercises</li>
+                            <li>Eat Home-cooked meals</li>
+                            <li>Carry a water bottle</li>
+                            <li>Never shop on an empty stomach</li>
+                            <li>Take fruit to work</li>
+                            <li>Find an exercise that you enjoy</li>
+                            <li>Mix in whole grains</li>
+                            <li>Walking Breaks</li>
+                            <li>Selectively eat out</li>
+                            <li>Plan meals</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">access_time</i> Follow this in every day...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="card card-nav-tabs" >
                         <div class="card-header" data-background-color="purple">
@@ -392,5 +354,5 @@
                     </div>
                 </div>
             </div>-->
-        </div>
+    </div>
 </div>
