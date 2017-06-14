@@ -19,11 +19,7 @@ let settings = {
         // password: '',
         // connectionTimeout: 5000
 
-        hostname: 'ds111851.mlab.com:11851',
-        name: 'wingsfitnessapp',
-        username: 'wings',
-        password: 'Good@123',
-        connectionTimeout: 5000
+      
     },
     domainUrl: 'https://angularattackwings.herokuapp.com/authenticate/'
     // domainUrl: 'http://localhost:5000/authenticate/'
